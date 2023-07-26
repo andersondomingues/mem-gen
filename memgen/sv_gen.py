@@ -38,7 +38,7 @@ def gen_sv(num_ifs: int, code_txt: str) -> str:
   module ram #(SIZE = 65536)(
     input logic clock,
     input logic reset,
-    input logic enable
+    input logic enable,
 {0}
   );""".format(interface_vector_declaration)
 
