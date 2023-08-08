@@ -4,15 +4,15 @@ from memgen.sv_gen_if import gen_sv_if
 
 def __main__():
   num_ifs: int = int(argv[1])
-  file_contents: str = gen_sv(num_ifs, "")
+  file_contents: str = gen_sv(num_ifs, "code.txt")
 
   # memory file
-  f = open("ram.sv", "w")
+  f = open("rtl/ram.sv", "w")
   f.write(file_contents)
   f.close()
 
   # interface
-  f = open("ram_if.sv", "w")
+  f = open("rtl/ram_if.sv", "w")
   f.write(gen_sv_if())
   f.close()
 

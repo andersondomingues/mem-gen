@@ -44,15 +44,21 @@ def gen_sv(num_ifs: int, code_txt: str) -> str:
 
 
   # memory initialization
+  boot = open(code_txt, "r+")
+  hex_line = boot.read().splitlines()
   memory_initialization = """
   initial begin
-    //{0}
-  end""".format(123456678)
+"""
+  for i in range(0, len(hex_line)):
+      line = f"    mem[{i}] = 'h{hex_line[i]};\n"
+      memory_initialization += line
 
+  memory_initialization += ("  end\n")
+  boot.close()
 
   # memory vector generation
   memory_vector = """
-  reg[31:0] mem[MEM_SIZE];"""
+  reg[31:0] mem[SIZE];"""
 
 
   # process region
